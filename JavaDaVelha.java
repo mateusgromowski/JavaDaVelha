@@ -80,7 +80,7 @@ public class JavaDaVelha {
 			++vez;
 		}
 		mostraTabuleiro();
-		if (vitoria.equals("XXX") || vitoria.equals("OOO")) {
+		if (vitoria.equals("X") || vitoria.equals("O")) {
 			System.out.println("Temos um vencedor! O ganhador foi o '"+ vitoria+"'." );
 		} else {
 			System.out.println("Temos um empate.");
