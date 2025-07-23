@@ -1,12 +1,23 @@
 import java.util.*;
 public class JavaDaVelha {
 	static String[] tabuleiro = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};	
+	public static boolean checaEmpate() {
+		for (int contador = 1; contador <= 9; contador++) {
+			if (!tabuleiro[contador].equals("X") && !tabuleiro[contador].equals("O")) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static void escolheCasa(String letraAtual, int casaEscolhida) {
 		Scanner entrada = new Scanner(System.in);
 		System.out.print("É a vez do "+ letraAtual + ", insira qual casa deseja mudar: ");
 		casaEscolhida = entrada.nextInt();
 		if ((tabuleiro[casaEscolhida].equals("X")) || (tabuleiro[casaEscolhida].equals("O"))) {
 			System.out.println("Casa já escolhida.");
+		}	else if (casaEscolhida < 1 && casaEscolhida > 9){
+				System.out.println("Casa inválida.");
 		} else {
 			tabuleiro[casaEscolhida] = letraAtual;	
 		}	
@@ -56,18 +67,18 @@ public class JavaDaVelha {
 			}
 			else if (linha.equals("XXX")) {
 				return "X";
-			}
-
+			} 
 		}
 		return " ";
 	}
 
 	public static void main(String[] args) {
+		boolean empate = false;
 		int vez = 1;
 		String vitoria = " ";
 		int casaEscolhida = 0;
 		String escolhe = " ";
-		while (!vitoria.equals("X") && !vitoria.equals("O")) {
+		while (!vitoria.equals("X") && !vitoria.equals("O") && !checaEmpate()) {
 			mostraTabuleiro();
 			if (vez % 2 != 0) {
 				escolhe = "X";
@@ -77,13 +88,15 @@ public class JavaDaVelha {
 				escolheCasa(escolhe, casaEscolhida);				
 			}
 			vitoria = checaVitoria();
+			empate = checaEmpate();
 			++vez;
+
 		}
 		mostraTabuleiro();
 		if (vitoria.equals("X") || vitoria.equals("O")) {
 			System.out.println("Temos um vencedor! O ganhador foi o '"+ vitoria+"'." );
-		} else {
-			System.out.println("Temos um empate.");
-		}
+		} else if (empate == true) {
+				System.out.println("Temos um empate.");
+			}
 	}
 }
