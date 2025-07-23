@@ -7,7 +7,7 @@ Um simples jogo da velha feito em Java, jogado no terminal, com verificação de
 - Modo de dois jogadores no terminal
 - Validação de casa ocupada
 - Verificação de vitória nas linhas, colunas e diagonais
-- Mensagem de vitória
+- Mensagem de vitória e empate
 - Exibição do tabuleiro a cada rodada
 
 #	Linguagem usada
